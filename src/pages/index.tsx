@@ -12,6 +12,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <h1>Main Page</h1>
       {/* <main className={styles.main}> */}
       {/* <div className={styles.description}>
           <p>
