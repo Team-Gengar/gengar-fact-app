@@ -13,8 +13,6 @@ function Register() {
     const enteredPassword = passwordRef.current!.value;
     const enteredPhone = phoneRef.current!.value;
     const enteredUsername = usernameRef.current!.value;
-
-    console.log(enteredEmail, enteredPassword, 'register form');
     fetch('/api/register', {
       method: 'POST',
       body: JSON.stringify({
