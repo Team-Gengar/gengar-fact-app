@@ -1,0 +1,51 @@
+.container {
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: row;
+  margin: 5vh;
+  /* max-width: 36rem; */
+  height: 90vh;
+  padding: 0;
+}
+
+.feed {
+  background-color: antiquewhite;
+  border-radius: inherit;
+  overflow: auto;
+  padding: 1rem;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  align-items: center;
+  background-color: gray;
+  border-radius: inherit;
+  display: flex;
+  height: 3rem;
+  justify-content: end;
+  padding: 1rem;
+  width: 100%;
+}
+
+.actionPanel {
+  border-radius: inherit;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5vh;
+  min-width: 25vw;
+}
+
+.generateFactPanel {
+  display: flex;
+  flex-grow: 1;
+  height: max-content;
+  justify-content: center;
+  margin-top: 2vh;
+  background-color: beige;
+  border-radius: inherit;
+}
