@@ -1,10 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import pool from '../../server/Model';
 
 type Data = {
   name: string;
 };
 
-export default function handler(
+export default function registerHandler(
   req: NextApiRequest,
   res: NextApiResponse<Data>,
 ) {
