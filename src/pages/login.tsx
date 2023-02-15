@@ -17,6 +17,7 @@ function Login() {
       username: enteredUsername,
       password: enteredPassword,
     });
+    console.log(result, 'result');
     if (result.error) {
       return setError('Invalid username or password');
     } else if (result.ok) {
