@@ -33,7 +33,7 @@
   border-radius: inherit;
   display: flex;
   height: 3rem;
-  justify-content: end;
+  justify-content: flex-end;
   padding: 1rem;
   width: 100%;
 }
@@ -71,4 +71,17 @@
   height: 2rem;
   margin-top: 1rem;
   width: 50%;
+}
+
+@keyframes rotate {
+  from {rotate: 0deg;}
+  to {rotate: 180deg;}
+}
+
+#gearIcon:hover {
+  animation-name: rotate;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  transform: rotate(90deg);
 }

@@ -85,6 +85,7 @@ function Register({
       console.log('error in fetch request:', err);
     }
   };
+  console.log(subscriptions);
   const subList = subscriptions.map(
     (
       sub: { subscription_category: string; subscription_id: number },

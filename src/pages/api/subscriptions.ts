@@ -15,4 +15,14 @@ export default async function subscriptionHandler(
       return res.status(500).json(error);
     }
   }
+    if (req.method === 'POST') {
+    const query = 'SELECT * FROM frequency WHERE user_id ';
+    try {
+      const subscription = await pool.query(query);
+      return res.status(200).json(subscription.rows);
+    } catch (error) {
+      console.log(error, 'error in subscription query handler');
+      return res.status(500).json(error);
+    }
+  }
 }
