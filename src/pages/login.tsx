@@ -20,7 +20,7 @@ function Login() {
     if (result.error) {
       return setError('Invalid username or password');
     } else if (result.ok) {
-      return router.replace('/');
+      return router.replace('/home');
     }
   };
 

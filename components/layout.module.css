@@ -33,7 +33,7 @@
   border-radius: inherit;
   display: flex;
   height: 3rem;
-  justify-content: end;
+  justify-content: flex-end;
   padding: 1rem;
   width: 100%;
 }
