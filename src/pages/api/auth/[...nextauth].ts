@@ -9,6 +9,21 @@ export default NextAuth({
   session: {
     strategy: 'jwt',
   },
+  // callbacks: {
+  //   async jwt({ token, user }) {
+  //     console.log(user, 'user in jwt callback, before if');
+  //     if (user) {
+  //       console.log(user, 'user in jwt callback');
+  //       token.user_id = user.name;
+  //     }
+  //     return token;
+  //   },
+  //   async session({ session, token }) {
+  //     session.user = token.user_id;
+  //     console.log(session, 'session in session callback');
+  //     return session;
+  //   },
+  // },
   providers: [
     CredentialsProvider({
       async authorize(credentials) {
@@ -21,7 +36,7 @@ export default NextAuth({
           if (!valid) {
             throw new Error('Invalid username or password');
           } else {
-            return { username: user.rows[0].user_id };
+            return { user: user.rows[0].user_id };
           }
         } catch (error) {
           console.log(error, 'error in login handler');

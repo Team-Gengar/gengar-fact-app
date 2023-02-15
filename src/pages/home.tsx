@@ -11,13 +11,11 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { signOut } from 'next-auth/react';
 
-
-
 async function getFact(): Promise<void> {
   const elem = document.querySelector('input[name=fact-category-type]:checked');
   let category = null;
   if (!elem) {
-    const categories = ['cat', 'dog'];
+    const categories = ['cat', 'dog', 'gengar'];
 
     category = categories[Math.floor(Math.random() * 2)];
   } else {
@@ -25,13 +23,11 @@ async function getFact(): Promise<void> {
     category = str.substring(0, str.indexOf('-'));
   }
 
-
   const response = await fetch('http://localhost:3000/api/facts/' + category);
   const fact = await response.json();
   console.log(fact);
   addToFeed(category[0].toUpperCase() + category.substring(1), fact);
 }
-
 
 /**
  * We're creating a new div element, adding a label and a fact to it, and then appending it to the feed
@@ -40,7 +36,7 @@ async function getFact(): Promise<void> {
  */
 const addToFeed = (labelText: string, factText: string): void => {
   const feed = document.getElementById('feed');
-  
+
   const node: HTMLDivElement = document.createElement('div');
   const label: HTMLHeadingElement = document.createElement('h3');
   label.innerText = `${labelText} Fact:`;
@@ -52,12 +48,12 @@ const addToFeed = (labelText: string, factText: string): void => {
 
   feed?.appendChild(node);
   node.scrollIntoView();
-}
-
-
+};
 
 function BasicPopover() {
-  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
+    null,
+  );
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -67,22 +63,22 @@ function BasicPopover() {
     setAnchorEl(null);
   };
 
-  const handleLogout = () =>{
+  const handleLogout = () => {
     signOut();
-  }
+  };
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
 
   return (
     <div>
       <Button aria-describedby={id} variant="text" onClick={handleClick}>
-                <Image
-                id={styles.gearIcon}
-                src='/images/gear.png'
-                height={32}
-                width={32}
-                alt="Settings icon"
-              />
+        <Image
+          id={styles.gearIcon}
+          src="/images/gear.png"
+          height={32}
+          width={32}
+          alt="Settings icon"
+        />
       </Button>
       <Popover
         id={id}
@@ -94,18 +90,17 @@ function BasicPopover() {
           horizontal: 'left',
         }}
       >
-        <Button onClick={handleLogout} sx={{ p: 2 }}>Logout</Button>
+        <Button onClick={handleLogout} sx={{ p: 2 }}>
+          Logout
+        </Button>
       </Popover>
     </div>
   );
 }
 
-
-
-
 export default function Home() {
   const { data: session, status } = useSession();
-    useEffect(() => {
+  useEffect(() => {
     if (status === 'unauthenticated') {
       console.log('unauthenticated');
       window.location.href = '/login';
@@ -121,33 +116,57 @@ export default function Home() {
           <div>
             <h2 id={styles.sticky}>Most recent facts:</h2>
           </div>
-          <div id="feed" className={styles.feed}>
-          </div>
+          <div id="feed" className={styles.feed}></div>
         </div>
         <div className={styles.actionPanel}>
           <div className={styles.navbar}>
-            <BasicPopover/>
+            <BasicPopover />
           </div>
           <div className={styles.generateFactPanel}>
             <h1>Fact Type:</h1>
             <div className={styles.generateFactForm}>
               <div>
-              <input type="radio" id="cat-fact-category" name="fact-category-type" value="cat-fact-category" />
-              <label htmlFor="cat-fact-category">Cat Fact</label><br />
+                <input
+                  type="radio"
+                  id="cat-fact-category"
+                  name="fact-category-type"
+                  value="cat-fact-category"
+                />
+                <label htmlFor="cat-fact-category">Cat Fact</label>
+                <br />
               </div>
               <div>
-              <input type="radio" id="dog-fact-category" name="fact-category-type" value="dog-fact-category" />
-              <label htmlFor="dog-fact-category">Dog Fact</label><br />
+                <input
+                  type="radio"
+                  id="dog-fact-category"
+                  name="fact-category-type"
+                  value="dog-fact-category"
+                />
+                <label htmlFor="dog-fact-category">Dog Fact</label>
+                <br />
               </div>
-              <button className={styles.generateFactSubmitButton} onClick={
-                () => {
+              <div>
+                <input
+                  type="radio"
+                  id="gengar-fact-category"
+                  name="fact-category-type"
+                  value="gengar-fact-category"
+                />
+                <label htmlFor="gengar-fact-category">Gengar Fact</label>
+                <br />
+              </div>
+              <button
+                className={styles.generateFactSubmitButton}
+                onClick={() => {
                   getFact();
-                }
-              } >Get Fact</button>
+                }}
+              >
+                Get Fact
+              </button>
             </div>
           </div>
         </div>
-      </ Layout>
+      </Layout>
     </>
-  )
+  );
 }
