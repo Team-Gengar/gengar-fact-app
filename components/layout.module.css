@@ -1,0 +1,74 @@
+.container {
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: row;
+  margin: 5vh;
+  /* max-width: 36rem; */
+  height: 90vh;
+  padding: 0;
+}
+
+.feedContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: antiquewhite;
+  border-radius: inherit;
+  padding: 1rem;
+  width: 100%;
+}
+
+.feed {
+  overflow: auto;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  align-items: center;
+  background-color: gray;
+  border-radius: inherit;
+  display: flex;
+  height: 3rem;
+  justify-content: end;
+  padding: 1rem;
+  width: 100%;
+}
+
+.actionPanel {
+  border-radius: inherit;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5vh;
+  min-width: 25vw;
+}
+
+.generateFactPanel {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: max-content;
+  margin-top: 2vh;
+  background-color: beige;
+  border-radius: inherit;
+}
+
+.generateFactForm {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+  width: 100%;
+}
+
+.generateFactSubmitButton {
+  border-radius: 0.5rem;
+  height: 2rem;
+  margin-top: 1rem;
+  width: 50%;
+}
