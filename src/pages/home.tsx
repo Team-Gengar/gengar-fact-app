@@ -48,6 +48,7 @@ export default function Home() {
           <div className={styles.navbar}>
             <Link href='/'>
                 <Image
+                id={styles.gearIcon}
                 src='/images/gear.png'
                 height={32}
                 width={32}
