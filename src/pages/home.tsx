@@ -5,6 +5,7 @@ import Layout from '../../components/layout';
 import styles from '../../components/layout.module.css';
 
 const getFact = (): void => {
+
   const elem = document.querySelector('input[name=fact-category-type]:checked');
   if (elem) {
     const str = (elem as HTMLInputElement).value;
