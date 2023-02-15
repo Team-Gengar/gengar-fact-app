@@ -1,35 +1,29 @@
-import { useRef, useState } from 'react';
-import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/router';
+import { useRef } from 'react';
 
 function Login() {
-  const [error, setError] = useState<null | string>(null);
-  const usernameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-  const router = useRouter();
 
-  const submitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
+  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const enteredUsername = usernameRef.current!.value;
+
+    const enteredEmail = emailRef.current!.value;
     const enteredPassword = passwordRef.current!.value;
-    const result = await signIn('credentials', {
-      redirect: false,
-      username: enteredUsername,
-      password: enteredPassword,
-    });
-    if (result.error) {
-      return setError('Invalid username or password');
-    } else if (result.ok) {
-      return router.replace('/home');
-    }
+
+    console.log(enteredEmail, enteredPassword, 'login form');
+    fetch('/api/login', {
+      method: 'POST',
+      body: JSON.stringify({ email: enteredEmail, password: enteredPassword }),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
   };
 
   return (
     <>
       <h1>Login</h1>
-      {error && <div>{error}</div>}
       <form onSubmit={submitHandler}>
-        <input type="text" placeholder="username" ref={usernameRef} />
+        <input type="email" placeholder="email" ref={emailRef} />
         <input type="password" placeholder="password" ref={passwordRef} />
         <button type="submit">Login</button>
       </form>
