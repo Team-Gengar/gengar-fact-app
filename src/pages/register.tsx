@@ -1,6 +1,8 @@
 import { useRef, useEffect, useState, createRef } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import styles from '../../components/layout.module.css';
+import Image from 'next/image';
 
 export async function getStaticProps() {
   const response = await fetch('http://localhost:3000/api/subscriptions');
@@ -107,16 +109,24 @@ function Register({
 
   return (
     <>
-      <h1>Register</h1>
-      {error && <div>{error}</div>}
-      <form onSubmit={submitHandler}>
-        <input type="text" placeholder="username" ref={usernameRef} />
-        <input type="email" placeholder="email" ref={emailRef} />
-        <input type="password" placeholder="password" ref={passwordRef} />
-        <input type="tel" placeholder="phone" ref={phoneRef} />
-        {subList}
-        <button type="submit">Register</button>
-      </form>
+      <div className={styles.loginContainer}>
+        <Image
+          src='/images/cat-of-fact.png'
+          height={200}
+          width={205}
+          alt="Cat-of-fact logo"
+        />
+        <h1>Register</h1>
+        {error && <div>{error}</div>}
+        <form className={styles.loginForm} onSubmit={submitHandler}>
+          <input type="text" placeholder="username" ref={usernameRef} />
+          <input type="email" placeholder="email" ref={emailRef} />
+          <input type="password" placeholder="password" ref={passwordRef} />
+          <input type="tel" placeholder="phone" ref={phoneRef} />
+          {subList}
+          <button type="submit">Register</button>
+        </form>
+      </div>
     </>
   );
 }
