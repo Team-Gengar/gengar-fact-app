@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Head from 'next/head';
+import Link from 'next/link';
 import Layout from '../../components/layout';
 import styles from '../../components/layout.module.css';
 
@@ -28,15 +29,33 @@ export default function Home() {
         </div>
         <div className={styles.actionPanel}>
           <div className={styles.navbar}>
-            <Image
-              src='/images/gear.png'
-              height={32}
-              width={32}
-              alt="Settings icon"
-            />
+            <Link href='/'>
+              <Image
+                src='/images/gear.png'
+                height={32}
+                width={32}
+                alt="Settings icon"
+              />
+            </Link>
           </div>
           <div className={styles.generateFactPanel}>
-            Generate Fact Panel
+            <h1>Fact Type:</h1>
+            <div className={styles.generateFactForm}>
+              <div>
+              <input type="radio" id="cat-fact-category" name="fact-category-type" value="cat-fact-category" />
+              <label htmlFor="cat-fact-category">Cat Fact</label><br />
+              </div>
+              <div>
+              <input type="radio" id="dog-fact-category" name="fact-category-type" value="dog-fact-category" />
+              <label htmlFor="dog-fact-category">Dog Fact</label><br />
+              </div>
+              <button className={styles.generateFactSubmitButton} onClick={
+                () => {
+                  const elem = document.querySelector('input[name=fact-category-type]:checked');
+                  console.log(elem ? (elem as HTMLInputElement).value : null)
+                }
+              } >Get Fact</button>
+            </div>
           </div>
         </div>
       </ Layout>
