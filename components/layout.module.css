@@ -8,11 +8,17 @@
   padding: 0;
 }
 
-.feed {
+.feedContainer {
+  display: flex;
+  flex-direction: column;
   background-color: antiquewhite;
   border-radius: inherit;
-  overflow: auto;
   padding: 1rem;
+  width: 100%;
+}
+
+.feed {
+  overflow: auto;
 }
 
 .header {
