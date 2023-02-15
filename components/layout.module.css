@@ -73,6 +73,23 @@
   width: 50%;
 }
 
+.loginContainer {
+  align-items: center;
+  background-color: antiquewhite;
+  border-radius: 2rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 50vh;
+  justify-content: center;
+  margin: 10vh 25vw 25vh 25vw;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+}
+
 @keyframes rotate {
   from {rotate: 0deg;}
   to {rotate: 180deg;}
@@ -84,4 +101,12 @@
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   transform: rotate(90deg);
+}
+
+#registerNavigationBox {
+  line-height: 0px;
+}
+
+#registerNavigationButton {
+  width: 100%;
 }

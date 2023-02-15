@@ -1,6 +1,9 @@
 import { useRef, useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import styles from '../../components/layout.module.css';
+import Image from 'next/image';
+import Link from 'next/link';
 
 function Login() {
   const [error, setError] = useState<null | string>(null);
@@ -26,13 +29,23 @@ function Login() {
 
   return (
     <>
-      <h1>Login</h1>
-      {error && <div>{error}</div>}
-      <form onSubmit={submitHandler}>
-        <input type="text" placeholder="username" ref={usernameRef} />
-        <input type="password" placeholder="password" ref={passwordRef} />
-        <button type="submit">Login</button>
-      </form>
+      <div className={styles.loginContainer}>
+        <Image
+          src='/images/cat-of-fact.png'
+          height={200}
+          width={205}
+          alt="Cat-of-fact logo"
+        />
+        <h1>Login</h1>
+        {error && <div>{error}</div>}
+        <form className={styles.loginForm} onSubmit={submitHandler}>
+          <input type="text" placeholder="username" ref={usernameRef} />
+          <input type="password" placeholder="password" ref={passwordRef} />
+          <button type="submit">Login</button>
+          <Link href='/register' id={styles.registerNavigationBox}><button id={styles.registerNavigationButton}>Sign Up</button></Link>
+        </form>
+
+      </div>
     </>
   );
 }
